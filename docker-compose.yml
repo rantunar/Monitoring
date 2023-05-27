@@ -1,0 +1,44 @@
+version: '3.3'
+services:
+  postgresql:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: 'password'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_DB: 'postgres'
+
+  mysql:
+    image: mysql
+    restart: always
+    ports:
+      - '3306:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'mysql'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_DATABASE: 'mysql'
+
+  prometheus:
+    image: 'prom/prometheus:v2.14.0'
+    ports:
+      - '9090:9090'
+    command: '--config.file=/etc/prometheus/config.yml'
+    volumes:
+      - './monitoring/prometheus.yml:/etc/prometheus/config.yml'
+
+  grafana:
+    image: 'grafana/grafana-oss:8.5.25'
+    container_name: 'grafana'
+    ports:
+      - '3000:3000'
+    user: 'root'
+    links:
+      - 'prometheus:prometheus'
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+      - GF_SERVER_DOMAIN=localhost
+      - GF_ALERTING_ENABLED=false
+      - GF_UNIFIED_ALERTING_ENABLED=true
