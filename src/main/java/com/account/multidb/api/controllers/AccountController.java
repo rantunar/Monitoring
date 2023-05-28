@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class AccountController {
 
-  @Autowired AccountService accountService;
+  @Autowired private AccountService accountService;
 
   @Operation(summary = "Post account create request")
   @ApiResponses(

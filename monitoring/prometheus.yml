@@ -1,7 +1,7 @@
 scrape_configs:
   - job_name: 'asyncApi-health'
-    scrape_interval: 30s
-    metrics_path: '/actuator/health'
+    scrape_interval: 2s
+    metrics_path: '/health'
     static_configs:
       - targets:
           - 192.168.1.28:8080

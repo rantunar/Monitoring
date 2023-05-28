@@ -8,11 +8,11 @@
 		<version>2.7.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.rest.procession</groupId>
-	<artifactId>asyncapi</artifactId>
+	<groupId>com.account.multidb.api</groupId>
+	<artifactId>monitoring</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>asyncapi</name>
-	<description>Async API Processing</description>
+	<name>monitoring</name>
+	<description>Monitoring System</description>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>

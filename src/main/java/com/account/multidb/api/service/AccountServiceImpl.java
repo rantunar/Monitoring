@@ -27,6 +27,13 @@ public class AccountServiceImpl implements AccountService {
   public String createAccount(final Account account) {
     try {
       if (account.getIsPrimary()) {
+        mysqlAccountRepo
+            .findById(account.getAccountNumber())
+            .ifPresent(
+                bo -> {
+                  throw new ApplicationException(
+                      String.format("Account already exists for id = %s", bo.getAccountNumber()));
+                });
         mysqlAccountRepo.save(
             com.account.multidb.api.mysql.entity.Account.builder()
                 .accountNumber(account.getAccountNumber())
@@ -35,6 +42,13 @@ public class AccountServiceImpl implements AccountService {
                 .insertedAt(LocalDateTime.now())
                 .build());
       } else {
+        postgresAccountRepo
+            .findById(account.getAccountNumber())
+            .ifPresent(
+                bo -> {
+                  throw new ApplicationException(
+                      String.format("Account already exists for id = %s", bo.getAccountNumber()));
+                });
         postgresAccountRepo.save(
             com.account.multidb.api.postgres.entity.Account.builder()
                 .accountNumber(account.getAccountNumber())
