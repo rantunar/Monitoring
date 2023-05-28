@@ -3,9 +3,9 @@
 ### Step 1: 
 Edit monitoring/prometheus.yml file and put your local ip in static_configs.target.
 ### Step 2:
-Run command >> "docker-compose up -d" (wait for sometime before running application)
+Run command >> "mvn clean install"
 ### Step 3:
-Run Monitoring application
+Run command >> "docker-compose up -d"
 ### Step 4:
 Open Grafana in browser - http://localhost:3000 with username = admin, password = admin(skip password change option).
 ### Step 5:

@@ -1,5 +1,20 @@
 version: '3.3'
 services:
+  monitoring-server:
+    restart: always
+    depends_on:
+      - postgresql
+      - mysql
+    container_name: monitoring-server
+    build:
+      context: .
+    image: monitoring-server:latest
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATASOURCE_MYSQL_URL: jdbc:mysql://mysql:3306/mysql
+      SPRING_DATASOURCE_POSTGRES_URL: jdbc:postgresql://postgresql:5432/postgres
+
   postgresql:
     image: postgres
     ports:
@@ -21,6 +36,8 @@ services:
       MYSQL_DATABASE: 'mysql'
 
   prometheus:
+    depends_on:
+      - monitoring-server
     image: 'prom/prometheus:v2.14.0'
     ports:
       - '9090:9090'
@@ -29,6 +46,8 @@ services:
       - './monitoring/prometheus.yml:/etc/prometheus/config.yml'
 
   grafana:
+    depends_on:
+      - prometheus
     image: 'grafana/grafana-oss:8.5.25'
     container_name: 'grafana'
     ports:
