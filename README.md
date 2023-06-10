@@ -1,5 +1,7 @@
 # Account multiple database api monitoring
 
+![alt text](https://github.com/rantunar/Monitoring/blob/main/MonitoringFlowDiagram.png?raw=true)
+
 ### Details:
 1. Advance alert & monitoring system helps to get the notification and solve the application problem before end user report that issue in production, it keeps checking multiple database connectivity, kafka connectivity and any API failures or slow response to notify the concern persons in advance. (Based on the input, data will be saved to different db tables)
 2. Springboot microservice having REST apis(GET,POST) with different response code(200,400,500)
@@ -12,7 +14,6 @@
 9. Kafka connection value grater than 0 means it connected to brokers where 0 means no connection.
 10. The alert will be trigger if either of MySql Connection/Postgres Connection value become 1 or Kafka Connection value become 0 or GET/POST(500) panel value becomes more than 0.
 11. It’s also possible to monitor the max response time of /account/create api to determine if it’s more than expected average value or not then the alert can be sent for further investigation to identify the slowness of API.
-
 
 ### Step 1: 
 Edit monitoring/prometheus.yml file and put your local ip in static_configs.target.
