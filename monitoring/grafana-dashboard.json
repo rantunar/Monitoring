@@ -31,7 +31,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "Ro5l_BwVz"
+        "uid": "R1Df1Yl4z"
       },
       "fieldConfig": {
         "defaults": {
@@ -81,7 +81,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "Ro5l_BwVz"
+            "uid": "R1Df1Yl4z"
           },
           "expr": "http_server_requests_seconds_count{uri=\"/v1/account/create\",status=\"500\"}",
           "refId": "A"
@@ -93,7 +93,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "Ro5l_BwVz"
+        "uid": "R1Df1Yl4z"
       },
       "fieldConfig": {
         "defaults": {
@@ -143,7 +143,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "Ro5l_BwVz"
+            "uid": "R1Df1Yl4z"
           },
           "expr": "http_server_requests_seconds_count{uri=\"/v1/account/create\",status=\"400\"}",
           "refId": "A"
@@ -155,7 +155,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "Ro5l_BwVz"
+        "uid": "R1Df1Yl4z"
       },
       "fieldConfig": {
         "defaults": {
@@ -205,7 +205,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "Ro5l_BwVz"
+            "uid": "R1Df1Yl4z"
           },
           "expr": "http_server_requests_seconds_count{uri=\"/v1/account/get\", status=\"500\"}",
           "refId": "A"
@@ -217,7 +217,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "Ro5l_BwVz"
+        "uid": "R1Df1Yl4z"
       },
       "fieldConfig": {
         "defaults": {
@@ -267,7 +267,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "Ro5l_BwVz"
+            "uid": "R1Df1Yl4z"
           },
           "expr": "pgsql_connection{application=\"account-crud\"}",
           "refId": "A"
@@ -279,7 +279,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "Ro5l_BwVz"
+        "uid": "R1Df1Yl4z"
       },
       "fieldConfig": {
         "defaults": {
@@ -329,7 +329,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "Ro5l_BwVz"
+            "uid": "R1Df1Yl4z"
           },
           "expr": "mysql_connection{application=\"account-crud\"}",
           "refId": "A"
@@ -341,7 +341,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "Ro5l_BwVz"
+        "uid": "R1Df1Yl4z"
       },
       "fieldConfig": {
         "defaults": {
@@ -391,13 +391,75 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "Ro5l_BwVz"
+            "uid": "R1Df1Yl4z"
           },
           "expr": "http_server_requests_seconds_max{uri=\"/v1/account/create\",status=\"200\"}",
           "refId": "A"
         }
       ],
       "title": "/account/create(200 max response time)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "R1Df1Yl4z"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 8
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.5.25",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "R1Df1Yl4z"
+          },
+          "expr": "kafka_consumer_connection_count_total",
+          "refId": "A"
+        }
+      ],
+      "title": "Kafka Connection( > 0)",
       "type": "stat"
     }
   ],
@@ -416,6 +478,6 @@
   "timezone": "",
   "title": "Account",
   "uid": "Gic73JQ4z",
-  "version": 7,
+  "version": 3,
   "weekStart": ""
 }
